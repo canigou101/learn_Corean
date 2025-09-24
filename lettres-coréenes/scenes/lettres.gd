@@ -3,6 +3,7 @@ extends Node2D
 var listeDeLettres="res://les_lettres/lettres.json"
 var lettresParse
 var sens=0
+var manche =0 
 #lecteur de dialogue 
 func chargement_Json(file_path):
 	if FileAccess.file_exists(file_path):
@@ -20,22 +21,24 @@ func chargement_Json(file_path):
 
 func _ready():
 	lettresParse = chargement_Json(listeDeLettres)
+	print(lettresParse)
+	var ListeLettres=getliste(1,lettresParse)
+	var NumLettre=randomletter(ListeLettres)
+	var string = "la lettre recherché, est : "
+	$Label.text=string + ListeLettres[NumLettre]
 	
+	
+func _process(delta):
 	
 func _on_line_edit_text_submitted(new_text):
-	pass
+	if (new_text==lettresParse[]):
+		
 	
-func getliste(sens):
+func getliste(sens,dicListe):
 	if sens==1:
-		var liste_de_lettres=[]
-		for i in lettresParse.keys():
-			liste_de_lettres.append(i)
-			return liste_de_lettres
+		return dicListe.keys()
 	elif  sens==-1:
-		var liste_de_lettres=[]
-		for i in lettresParse.value():
-			liste_de_lettres.append(i)
-			return liste_de_lettres
+		return dicListe.values()
 	return 1
 
 func randomletter(liste):

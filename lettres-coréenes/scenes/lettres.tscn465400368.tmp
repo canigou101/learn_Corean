@@ -12,6 +12,7 @@ offset_right = 618.563
 offset_bottom = 206.0
 
 [node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
 offset_left = 313.0
 offset_top = 175.0
 offset_right = 436.0
