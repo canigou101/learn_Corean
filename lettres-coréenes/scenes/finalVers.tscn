@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://4y03ieqwlqbg"]
+
+[ext_resource type="Script" uid="uid://5asm1pfot7k3" path="res://script/finalVers.gd" id="1_afunr"]
+
+[node name="finalVers" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_afunr")
+
+[node name="manchePoints" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.5
+offset_right = 19.5
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 313.0
+offset_top = 175.0
+offset_right = 436.0
+offset_bottom = 198.0
+text = "label à deviner: "
+
+[node name="LineEdit" type="LineEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 550.0
+offset_top = 175.0
+offset_right = 618.563
+offset_bottom = 206.0
+
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
