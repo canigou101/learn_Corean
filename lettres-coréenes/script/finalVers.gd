@@ -1,6 +1,5 @@
 extends Control
 
-var sens=0 #int
 
 var manche =0 #int
 var point=0 #int
@@ -34,8 +33,12 @@ func _ready():
 	lettresParse = chargement_Json(listeDeLettres)# chargement du dictionnaire des lettres avec leur corresponcances 
 	ListeLettres=getliste(1,lettresParse)# récupération d'une liste pour pouvoir utiliser la fonction rand pour avoir un index
 	PoseLettre=randomletter(ListeLettres)# récupération d'une position de lettre random
+	%RichTextLabel.text=str(lettresParse)
 	affichage()# affichage de la lettre 
 	affichagePoints()# initialisation du compteur
+	#zone test
+	
+	
 	
 
 func _on_line_edit_text_submitted(new_text):

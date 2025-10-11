@@ -22,21 +22,43 @@ offset_right = 19.5
 offset_bottom = 23.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 313.0
-offset_top = 175.0
-offset_right = 436.0
-offset_bottom = 198.0
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+anchor_left = 0.690104
+anchor_top = 0.322531
+anchor_right = 0.945313
+anchor_bottom = 0.859568
+grow_horizontal = 0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -20.0
+offset_right = 97.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 text = "label à deviner: "
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 550.0
-offset_top = 175.0
-offset_right = 618.563
-offset_bottom = 206.0
+layout_mode = 2
+keep_editing_on_text_submit = true
+clear_button_enabled = true
 
-[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
