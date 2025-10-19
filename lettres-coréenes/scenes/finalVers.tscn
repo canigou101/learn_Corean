@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://4y03ieqwlqbg"]
+[gd_scene load_steps=4 format=3 uid="uid://4y03ieqwlqbg"]
 
 [ext_resource type="Script" uid="uid://5asm1pfot7k3" path="res://script/finalVers.gd" id="1_afunr"]
+[ext_resource type="AudioStream" uid="uid://cqin5kmytjfsl" path="res://sound effect/correct-6033.mp3" id="2_xg346"]
+[ext_resource type="AudioStream" uid="uid://dh2xfiilqbf3n" path="res://sound effect/wronganswer-37702.mp3" id="3_ne4vy"]
 
 [node name="finalVers" type="Control"]
 layout_mode = 3
@@ -14,41 +16,28 @@ script = ExtResource("1_afunr")
 [node name="manchePoints" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -19.5
-offset_right = 19.5
-offset_bottom = 23.0
+anchors_preset = -1
+anchor_left = 0.499566
+anchor_top = 0.0617284
+anchor_right = 0.500434
+anchor_bottom = 0.0972222
 grow_horizontal = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 2
-anchor_left = 0.690104
-anchor_top = 0.322531
-anchor_right = 0.945313
-anchor_bottom = 0.859568
-grow_horizontal = 0
-grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -97.5
-offset_top = -20.0
-offset_right = 97.5
-offset_bottom = 20.0
+anchors_preset = -1
+anchor_left = 0.366753
+anchor_top = 0.469136
+anchor_right = 0.633247
+anchor_bottom = 0.530864
+offset_left = 56.0
+offset_right = -56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 100
 alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
@@ -61,4 +50,28 @@ layout_mode = 2
 keep_editing_on_text_submit = true
 clear_button_enabled = true
 
+[node name="Solution" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+offset_left = 960.0
+offset_top = 304.0
+offset_right = 1060.0
+offset_bottom = 336.0
+
+[node name="aide" type="Button" parent="."]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 304.0
+offset_right = 944.0
+offset_bottom = 336.0
+text = "Solution"
+
+[node name="win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xg346")
+
+[node name="wrong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ne4vy")
+
 [connection signal="text_submitted" from="HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="aide" to="." method="_on_aide_pressed"]

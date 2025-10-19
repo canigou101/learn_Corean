@@ -1,6 +1,8 @@
 extends Control
 
 
+var aideVisible= false
+
 var manche =0 #int
 var point=0 #int
 var PoseLettre #int
@@ -33,20 +35,30 @@ func _ready():
 	lettresParse = chargement_Json(listeDeLettres)# chargement du dictionnaire des lettres avec leur corresponcances 
 	ListeLettres=getliste(1,lettresParse)# récupération d'une liste pour pouvoir utiliser la fonction rand pour avoir un index
 	PoseLettre=randomletter(ListeLettres)# récupération d'une position de lettre random
-	%RichTextLabel.text=str(lettresParse)
+	dicoAide()#affichage du dico d'aide
 	affichage()# affichage de la lettre 
 	affichagePoints()# initialisation du compteur
+	afficherAide(aideVisible)
 	#zone test
 	
-	
-	
+func afficherAide(boulean):
+	if boulean==true:
+		%Solution.set_visible(true)
+		dicoAide()
+	if boulean==false:
+		%Solution.set_visible(false)
+
+func dicoAide():
+	%Solution.text="Solution = " +str(lettresParse [ListeLettres[PoseLettre]])
+
 
 func _on_line_edit_text_submitted(new_text):
 	lettrePropo=new_text
 	isTheSame()
 	generation()
 	%LineEdit.text=""
-	
+	aideVisible=false
+	afficherAide(aideVisible)
 
 
 func getliste(sens,dicListe):
@@ -70,10 +82,12 @@ func isTheSame():
 		point+=1
 		print("bonne lettre")
 		print(lettrePropo," ",lettre_a_trouver)
+		$win.play()
 	elif lettrePropo!=lettre_a_trouver:
 		manche+=1
 		print("mauvaise lettre")
 		print(lettrePropo," ",lettre_a_trouver)
+		$wrong.play()
 	affichagePoints()
 
 func affichagePoints():
@@ -85,3 +99,8 @@ func generation():
 	affichage()# affichage de la lettre 
 	affichagePoints()# actualisation du compteur
 	
+
+
+func _on_aide_pressed() -> void:
+	aideVisible=true
+	afficherAide(aideVisible)
