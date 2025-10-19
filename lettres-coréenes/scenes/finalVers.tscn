@@ -14,15 +14,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_afunr")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_children = 2
+z_index = -7
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.145048, 0.562917, 0.642236, 1)
+
 [node name="win" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ne4vy")
+volume_db = -10.0
 pitch_scale = 1.2
 
 [node name="wrong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ne4vy")
+volume_db = -10.0
 
 [node name="testvol" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_xg346")
+volume_db = -10.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
