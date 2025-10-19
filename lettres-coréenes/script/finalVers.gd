@@ -82,12 +82,14 @@ func isTheSame():
 		point+=1
 		print("bonne lettre")
 		print(lettrePropo," ",lettre_a_trouver)
+		%mauvaiseReponse.text="la bonne réponse "
 		$win.play()
 	elif lettrePropo!=lettre_a_trouver:
 		manche+=1
 		print("mauvaise lettre")
 		print(lettrePropo," ",lettre_a_trouver)
 		$wrong.play()
+		%mauvaiseReponse.text="la bonne lettre était: "+lettre_a_trouver
 	affichagePoints()
 
 func affichagePoints():
