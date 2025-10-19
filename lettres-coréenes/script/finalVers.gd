@@ -104,3 +104,17 @@ func generation():
 func _on_aide_pressed() -> void:
 	aideVisible=true
 	afficherAide(aideVisible)
+
+func setSon(volume):
+	pass
+
+
+func _on_h_slider_value_changed(value: float) -> void:
+	$wrong.volume_linear=value
+	$win.volume_linear=value
+	$testvol.volume_linear=value
+	
+
+
+func _on_h_slider_drag_ended(value_changed: bool) -> void:
+	$testvol.play()
