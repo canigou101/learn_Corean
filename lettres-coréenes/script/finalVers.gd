@@ -107,8 +107,6 @@ func _on_aide_pressed() -> void:
 	aideVisible=true
 	afficherAide(aideVisible)
 
-func setSon(volume):
-	pass
 
 
 func _on_h_slider_value_changed(value: float) -> void:

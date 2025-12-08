@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://4y03ieqwlqbg"]
+[gd_scene load_steps=6 format=3 uid="uid://4y03ieqwlqbg"]
 
 [ext_resource type="Script" uid="uid://5asm1pfot7k3" path="res://script/finalVers.gd" id="1_afunr"]
+[ext_resource type="Texture2D" uid="uid://bu2v3wsivjelv" path="res://wallpaper/1326363.png" id="2_cheh2"]
 [ext_resource type="AudioStream" uid="uid://chjco1o8wu4ep" path="res://sound effect/game-start-317318.mp3" id="2_ne4vy"]
 [ext_resource type="AudioStream" uid="uid://cqin5kmytjfsl" path="res://sound effect/correct-6033.mp3" id="2_xg346"]
 [ext_resource type="AudioStream" uid="uid://dh2xfiilqbf3n" path="res://sound effect/wronganswer-37702.mp3" id="3_ne4vy"]
@@ -14,17 +15,48 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_afunr")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.1176147
+offset_right = 2.1176758
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cheh2")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="nomDuJeu" type="Label" parent="."]
 clip_children = 2
-z_index = -7
-z_as_relative = false
+light_mask = 31
+visibility_layer = 2
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -264.5
+offset_top = 80.0
+offset_right = 295.5
+offset_bottom = 155.00002
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Apprendre le Hangeul"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="nomDuJeu"]
+light_mask = 0
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.145048, 0.562917, 0.642236, 1)
+color = Color(0.105780244, 0.13060965, 0.20874256, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="win" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ne4vy")
@@ -39,46 +71,69 @@ volume_db = -10.0
 stream = ExtResource("2_xg346")
 volume_db = -10.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 100
-alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(975, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.105882354, 0.12941177, 0.20784314, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2873264
+anchor_top = 0.46682099
+anchor_right = 0.7126736
+anchor_bottom = 0.533179
+offset_bottom = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="manchePoints" type="Label" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="son" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="son" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "son"
 
-[node name="HSlider" type="HSlider" parent="HBoxContainer/VBoxContainer"]
+[node name="HSlider" type="HSlider" parent="Control/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 max_value = 1.0
 step = 0.01
+value = 0.25
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_constants/separation = 280
-alignment = 1
-
-[node name="manchePoints" type="Label" parent="HBoxContainer/VBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -86,33 +141,31 @@ size_flags_stretch_ratio = 2.75
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="Label" type="Label" parent="Control/HBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "label à deviner: "
+text = "lettre à deviner: "
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="Control/HBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 keep_editing_on_text_submit = true
 clear_button_enabled = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 10
+size_flags_stretch_ratio = 1.9
 
-[node name="aide" type="Button" parent="."]
-offset_left = 838.0
-offset_top = 303.0
-offset_right = 910.0
-offset_bottom = 334.0
+[node name="aide" type="Button" parent="Control/HBoxContainer/HBoxContainer3"]
+layout_mode = 2
 text = "Solution"
 
-[node name="Solution" type="Label" parent="aide"]
+[node name="Solution" type="Label" parent="Control/HBoxContainer/HBoxContainer3/aide"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
 offset_left = 87.0
 offset_top = 4.0
 offset_right = 237.0
@@ -126,7 +179,7 @@ offset_top = 256.0
 offset_right = 582.0
 offset_bottom = 279.0
 
-[connection signal="drag_ended" from="HBoxContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_drag_ended"]
-[connection signal="value_changed" from="HBoxContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
-[connection signal="text_submitted" from="HBoxContainer/VBoxContainer2/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="aide" to="." method="_on_aide_pressed"]
+[connection signal="drag_ended" from="Control/HBoxContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="value_changed" from="Control/HBoxContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="text_submitted" from="Control/HBoxContainer/HBoxContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="Control/HBoxContainer/HBoxContainer3/aide" to="." method="_on_aide_pressed"]

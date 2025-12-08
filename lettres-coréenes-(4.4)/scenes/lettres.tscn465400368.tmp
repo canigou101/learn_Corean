@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://draqxokh4aqfg"]
+
+[ext_resource type="Script" uid="uid://b002qqpgqhj34" path="res://scenes/lettres.gd" id="1_jy66q"]
+
+[node name="lettres" type="Node2D"]
+script = ExtResource("1_jy66q")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 550.0
+offset_top = 175.0
+offset_right = 618.563
+offset_bottom = 206.0
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 313.0
+offset_top = 175.0
+offset_right = 436.0
+offset_bottom = 198.0
+text = "label à deviner: "
+
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]

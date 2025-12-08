@@ -1,0 +1,132 @@
+[gd_scene load_steps=5 format=3 uid="uid://4y03ieqwlqbg"]
+
+[ext_resource type="Script" uid="uid://5asm1pfot7k3" path="res://script/finalVers.gd" id="1_afunr"]
+[ext_resource type="AudioStream" uid="uid://chjco1o8wu4ep" path="res://sound effect/game-start-317318.mp3" id="2_ne4vy"]
+[ext_resource type="AudioStream" uid="uid://cqin5kmytjfsl" path="res://sound effect/correct-6033.mp3" id="2_xg346"]
+[ext_resource type="AudioStream" uid="uid://dh2xfiilqbf3n" path="res://sound effect/wronganswer-37702.mp3" id="3_ne4vy"]
+
+[node name="finalVers" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_afunr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_children = 2
+z_index = -7
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.145048, 0.562917, 0.642236, 1)
+
+[node name="win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ne4vy")
+volume_db = -10.0
+pitch_scale = 1.2
+
+[node name="wrong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ne4vy")
+volume_db = -10.0
+
+[node name="testvol" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xg346")
+volume_db = -10.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="son" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "son"
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 280
+alignment = 1
+
+[node name="manchePoints" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.75
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "label à deviner: "
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+keep_editing_on_text_submit = true
+clear_button_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="aide" type="Button" parent="."]
+offset_left = 838.0
+offset_top = 303.0
+offset_right = 910.0
+offset_bottom = 334.0
+text = "Solution"
+
+[node name="Solution" type="Label" parent="aide"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+offset_left = 87.0
+offset_top = 4.0
+offset_right = 237.0
+offset_bottom = 27.0
+
+[node name="mauvaiseReponse" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 542.0
+offset_top = 256.0
+offset_right = 582.0
+offset_bottom = 279.0
+
+[connection signal="drag_ended" from="HBoxContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="text_submitted" from="HBoxContainer/VBoxContainer2/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="aide" to="." method="_on_aide_pressed"]
