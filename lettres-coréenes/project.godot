@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="lettres coréenes"
-run/main_scene="uid://4y03ieqwlqbg"
+run/main_scene="uid://j3jrnyh5mdbf"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

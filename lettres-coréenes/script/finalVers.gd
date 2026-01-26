@@ -14,6 +14,7 @@ var ListeLettres #liste
  
 var lettre_a_trouver # char
 var lettrePropo #char
+var oldLetter #char
 
 
 #lecteur de dialogue 
@@ -55,7 +56,10 @@ func dicoAide():
 func _on_line_edit_text_submitted(new_text):
 	lettrePropo=new_text
 	isTheSame()
+	oldLetter=lettre_a_trouver
 	generation()
+	if(oldLetter==lettre_a_trouver):
+		generation()
 	%LineEdit.text=""
 	aideVisible=false
 	afficherAide(aideVisible)
@@ -118,3 +122,7 @@ func _on_h_slider_value_changed(value: float) -> void:
 
 func _on_h_slider_drag_ended(value_changed: bool) -> void:
 	$testvol.play()
+
+
+func _on_param_pressed():
+	

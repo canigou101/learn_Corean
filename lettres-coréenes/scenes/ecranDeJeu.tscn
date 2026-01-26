@@ -1,19 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://4y03ieqwlqbg"]
 
-[ext_resource type="Script" uid="uid://5asm1pfot7k3" path="res://script/finalVers.gd" id="1_afunr"]
-[ext_resource type="Texture2D" uid="uid://bu2v3wsivjelv" path="res://wallpaper/1326363.png" id="2_cheh2"]
-[ext_resource type="AudioStream" uid="uid://chjco1o8wu4ep" path="res://sound effect/game-start-317318.mp3" id="2_ne4vy"]
-[ext_resource type="AudioStream" uid="uid://cqin5kmytjfsl" path="res://sound effect/correct-6033.mp3" id="2_xg346"]
-[ext_resource type="AudioStream" uid="uid://dh2xfiilqbf3n" path="res://sound effect/wronganswer-37702.mp3" id="3_ne4vy"]
+[ext_resource type="Script" uid="uid://5asm1pfot7k3" path="res://script/finalVers.gd" id="1_xqh2j"]
+[ext_resource type="Texture2D" uid="uid://bu2v3wsivjelv" path="res://wallpaper/1326363.png" id="2_7inty"]
+[ext_resource type="AudioStream" uid="uid://chjco1o8wu4ep" path="res://sound effect/game-start-317318.mp3" id="3_vjovf"]
+[ext_resource type="AudioStream" uid="uid://dh2xfiilqbf3n" path="res://sound effect/wronganswer-37702.mp3" id="4_obdgx"]
+[ext_resource type="AudioStream" uid="uid://cqin5kmytjfsl" path="res://sound effect/correct-6033.mp3" id="5_4jelj"]
 
-[node name="finalVers" type="Control"]
+[node name="ecranDeJeu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_afunr")
+script = ExtResource("1_xqh2j")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -24,8 +24,8 @@ offset_left = -2.1176147
 offset_right = 2.1176758
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_cheh2")
-expand_mode = 2
+texture = ExtResource("2_7inty")
+expand_mode = 3
 stretch_mode = 4
 
 [node name="nomDuJeu" type="Label" parent="."]
@@ -59,16 +59,16 @@ color = Color(0.105780244, 0.13060965, 0.20874256, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="win" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ne4vy")
+stream = ExtResource("3_vjovf")
 volume_db = -10.0
 pitch_scale = 1.2
 
 [node name="wrong" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ne4vy")
+stream = ExtResource("4_obdgx")
 volume_db = -10.0
 
 [node name="testvol" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_xg346")
+stream = ExtResource("5_4jelj")
 volume_db = -10.0
 
 [node name="Control" type="Control" parent="."]
@@ -179,7 +179,13 @@ offset_top = 256.0
 offset_right = 582.0
 offset_bottom = 279.0
 
+[node name="param" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="drag_ended" from="Control/HBoxContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_drag_ended"]
 [connection signal="value_changed" from="Control/HBoxContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="text_submitted" from="Control/HBoxContainer/HBoxContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="Control/HBoxContainer/HBoxContainer3/aide" to="." method="_on_aide_pressed"]
+[connection signal="pressed" from="param" to="." method="_on_param_pressed"]
